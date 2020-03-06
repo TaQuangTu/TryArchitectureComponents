@@ -3,4 +3,5 @@
     <dimen name="screen_padding">20dp</dimen>
     <dimen name="default_view_margin">5dp</dimen>
     <dimen name="big_view_margin">10dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
 </resources>

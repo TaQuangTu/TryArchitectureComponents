@@ -7,10 +7,12 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.taquangtu.kantektest.Base.BaseActivity
+import com.taquangtu.kantektest.Dialog.LoadingDialog
 import com.taquangtu.kantektest.Models.Data
 import com.taquangtu.kantektest.Models.User
 import com.taquangtu.kantektest.R
 import com.taquangtu.kantektest.ViewModels.LoginViewModel
+import kotlinx.android.synthetic.main.dialog_loading.*
 import java.lang.StringBuilder
 
 class LoginActivity : BaseActivity(),Observer<User> {
@@ -20,6 +22,7 @@ class LoginActivity : BaseActivity(),Observer<User> {
     private lateinit var mBtnLogin: Button
     private lateinit var mTvUserInfo: TextView
     private lateinit var mLoginViewModel: LoginViewModel
+    private var mDialogLoading: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,7 @@ class LoginActivity : BaseActivity(),Observer<User> {
 
     override fun refetchData() {
         super.refetchData()
+        showLoadingIf(true)
         val userName = mEdtUserName.text.toString().trim()
         val password = mEdtPassword.text.toString().trim()
         mLoginViewModel.loadUser(userName,password)
@@ -67,6 +71,20 @@ class LoginActivity : BaseActivity(),Observer<User> {
 
     override fun onChanged(t: User?) {
         presentUserInfo(t)
+        showLoadingIf(false)
     }
-
+    fun showLoadingIf(show:Boolean){
+        if(mDialogLoading==null){
+            mDialogLoading = LoadingDialog()
+            mDialogLoading!!.setMessage("Loading...")
+        }
+        if(show){
+            mDialogLoading!!.show(supportFragmentManager)
+        }
+        else{
+            if(mDialogLoading!!.isResumed){
+                mDialogLoading!!.hide()
+            }
+        }
+    }
 }
