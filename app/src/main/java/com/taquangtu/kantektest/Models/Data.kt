@@ -1,0 +1,30 @@
+package com.taquangtu.kantektest.Models
+
+data class Data(
+    val access_token: String,
+    val address: String,
+    val avatar_url: String,
+    val birthday: String,
+    val check_in_count: Int,
+    val cover: String,
+    val cover_url: String,
+    val device_token: String,
+    val email: String,
+    val facebook_id: Any,
+    val follow_status: Int,
+    val follower_count: Int,
+    val friend_count: Int,
+    val friend_status: String,
+    val gender: Int,
+    val google_id: Any,
+    val id: Int,
+    val is_influence: Boolean,
+    val latitude: String,
+    val longitude: String,
+    val media_count: Int,
+    val name: String,
+    val phone: String,
+    val receive_notification: Boolean,
+    val review_count: Int,
+    val type: Int
+)
