@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginViewModel : ViewModel() {
-    private val BASE_URL = "http://yelp-test.kennjdemo.com/mApi/v1/"
+    private val BASE_URL = "http://yelp-test.kennjdemo.com/api/v1/"
     private var mRetrofit: Retrofit
     private var mApi:Api
     private var mUser: MutableLiveData<User>
